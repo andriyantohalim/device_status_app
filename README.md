@@ -36,9 +36,11 @@ The Device Status App is a cross-platform mobile application built using Flutter
 
 ## Features
 
-- Send text messages to request image generation
-- Display generated images from OpenAI API
-- Follows MVVM design pattern for better code organization
+- **Battery Level:** Display battery level as a percentage.
+- **Battery Health:** Show battery health status (good, cold, dead, overheat, over voltage, unspecified failure, or unknown).
+- **Battery Temperature:** Display battery temperature in degrees Celsius.
+- **Battery Voltage:** Show battery voltage in millivolts (mV).
+- **Charging Status:** Indicate battery charging status (charging, discharging, full, or not charging).
 
 ## Contributing
 
