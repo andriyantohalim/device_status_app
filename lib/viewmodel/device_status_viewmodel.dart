@@ -9,7 +9,16 @@ class DeviceStatusViewModel {
       final Map<dynamic, dynamic> result = await platform.invokeMethod('getBatteryInfo');
       final batteryLevel = result['level'] as int;
       final batteryHealth = result['health'] as String;
-      return DeviceStatus(batteryLevel: batteryLevel, batteryHealth: batteryHealth);
+      final batteryTemperature = result['temperature'] as int;
+      final batteryVoltage = result['voltage'] as int;
+      final batteryStatus = result['status'] as String;
+      return DeviceStatus(
+        batteryLevel: batteryLevel,
+        batteryHealth: batteryHealth,
+        batteryTemperature: batteryTemperature,
+        batteryVoltage: batteryVoltage,
+        batteryStatus: batteryStatus,
+      );
     } on PlatformException catch (e) {
       throw 'Failed to get device status: ${e.message}';
     }

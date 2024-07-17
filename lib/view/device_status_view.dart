@@ -39,6 +39,9 @@ class _DeviceStatusViewState extends State<DeviceStatusView> {
                 children: [
                   Text('Battery Level: ${deviceStatus.batteryLevel}%'),
                   Text('Battery Health: ${deviceStatus.batteryHealth}'),
+                  Text('Battery Temperature: ${deviceStatus.batteryTemperature / 10}°C'),
+                  Text('Battery Voltage: ${deviceStatus.batteryVoltage} mV'),
+                  Text('Battery Status: ${deviceStatus.batteryStatus}'),
                 ],
               );
             } else {

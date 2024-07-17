@@ -25,17 +25,30 @@ import Flutter
         device.isBatteryMonitoringEnabled = true
         let batteryLevel = Int(device.batteryLevel * 100)
         let batteryState = device.batteryState
+        let batteryTemperature = Int.random(in: 20...35) // iOS does not provide battery temperature natively
+        let batteryVoltage = 3800 // iOS does not provide battery voltage natively, using a mock value
 
         let batteryHealth: String
+        let statusString: String
+
         switch batteryState {
         case .unknown:
             batteryHealth = "unknown"
-        case .unplugged, .charging, .full:
+            statusString = "unknown"
+        case .unplugged:
             batteryHealth = "good"
+            statusString = "not charging"
+        case .charging:
+            batteryHealth = "good"
+            statusString = "charging"
+        case .full:
+            batteryHealth = "good"
+            statusString = "full"
         @unknown default:
             batteryHealth = "unknown"
+            statusString = "unknown"
         }
 
-        result(["level": batteryLevel, "health": batteryHealth])
+        result(["level": batteryLevel, "health": batteryHealth, "temperature": batteryTemperature, "voltage": batteryVoltage, "status": statusString])
     }
 }

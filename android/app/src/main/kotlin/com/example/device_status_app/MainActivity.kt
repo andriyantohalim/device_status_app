@@ -30,11 +30,12 @@ class MainActivity: FlutterActivity() {
     }
 
     private fun getBatteryInfo(): Map<String, Any>? {
-        val batteryManager = getSystemService(Context.BATTERY_SERVICE) as BatteryManager
-        val batteryLevel = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
-        
         val intent = registerReceiver(null, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
+        val batteryLevel = intent?.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) ?: -1
         val batteryHealth = intent?.getIntExtra(BatteryManager.EXTRA_HEALTH, -1) ?: -1
+        val batteryTemperature = intent?.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, -1) ?: -1
+        val batteryVoltage = intent?.getIntExtra(BatteryManager.EXTRA_VOLTAGE, -1) ?: -1
+        val batteryStatus = intent?.getIntExtra(BatteryManager.EXTRA_STATUS, -1) ?: -1
 
         val healthString = when (batteryHealth) {
             BatteryManager.BATTERY_HEALTH_COLD -> "cold"
@@ -46,6 +47,20 @@ class MainActivity: FlutterActivity() {
             else -> "unknown"
         }
 
-        return mapOf("level" to batteryLevel, "health" to healthString)
+        val statusString = when (batteryStatus) {
+            BatteryManager.BATTERY_STATUS_CHARGING -> "charging"
+            BatteryManager.BATTERY_STATUS_DISCHARGING -> "discharging"
+            BatteryManager.BATTERY_STATUS_FULL -> "full"
+            BatteryManager.BATTERY_STATUS_NOT_CHARGING -> "not charging"
+            else -> "unknown"
+        }
+
+        return mapOf(
+            "level" to batteryLevel,
+            "health" to healthString,
+            "temperature" to batteryTemperature,
+            "voltage" to batteryVoltage,
+            "status" to statusString
+        )
     }
 }
