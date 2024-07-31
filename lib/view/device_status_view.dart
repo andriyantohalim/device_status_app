@@ -37,11 +37,21 @@ class _DeviceStatusViewState extends State<DeviceStatusView> {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Battery Level: ${deviceStatus.batteryLevel}%'),
-                  Text('Battery Health: ${deviceStatus.batteryHealth}'),
-                  Text('Battery Temperature: ${deviceStatus.batteryTemperature / 10}°C'),
-                  Text('Battery Voltage: ${deviceStatus.batteryVoltage} mV'),
-                  Text('Battery Status: ${deviceStatus.batteryStatus}'),
+                    Text('Battery Level: ${deviceStatus.batteryLevel}%'),
+                    Text('Battery Health: ${deviceStatus.batteryHealth}'),
+                    Text('Battery Temperature: ${deviceStatus.batteryTemperature / 10}°C'),
+                    Text('Battery Voltage: ${deviceStatus.batteryVoltage} mV'),
+                    Text('Battery Status: ${deviceStatus.batteryStatus}'),
+                    const SizedBox(height: 20),
+                    const Text('Accelerometer:'),
+                    Text('X: ${deviceStatus.accelerometer[0]}'),
+                    Text('Y: ${deviceStatus.accelerometer[1]}'),
+                    Text('Z: ${deviceStatus.accelerometer[2]}'),
+                    const SizedBox(height: 20),
+                    const Text('Gyroscope:'),
+                    Text('X: ${deviceStatus.gyroscope[0]}'),
+                    Text('Y: ${deviceStatus.gyroscope[1]}'),
+                    Text('Z: ${deviceStatus.gyroscope[2]}'),
                 ],
               );
             } else {

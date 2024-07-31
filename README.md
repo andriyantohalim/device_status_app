@@ -1,14 +1,16 @@
 # Device Status App
 
-The Device Status App is a cross-platform mobile application built using Flutter. It provides real-time information about the device's battery status, including battery level, health, temperature, voltage, and charging status. The app leverages Flutter's Platform Channels to communicate with native code for accessing platform-specific features.
+The Device Status App is a cross-platform mobile application built using Flutter. This app provides real-time information about the device’s battery status and sensor data, such as the accelerometer and gyroscope. The app uses Flutter’s Platform Channels to communicate with native code, enabling access to platform-specific features.
 
 ## Features
 
-- Display battery level as a percentage.
-- Show battery health status (good, cold, dead, overheat, over voltage, unspecified failure, or unknown).
-- Display battery temperature in degrees Celsius.
-- Show battery voltage in millivolts (mV).
-- Indicate battery charging status (charging, discharging, full, or not charging).
+- **Battery Level:** Display battery level as a percentage.
+- **Battery Health:** Show battery health status (good, cold, dead, overheat, over voltage, unspecified failure, or unknown).
+- **Battery Temperature:** Display battery temperature in degrees Celsius.
+- **Battery Voltage:** Show battery voltage in millivolts (mV).
+- **Charging Status:** Indicate battery charging status (charging, discharging, full, or not charging).
+- **Accelerometer:** Provides real-time data on the device’s acceleration along the X, Y, and Z axes.
+- **Gyroscope:** Provides real-time data on the device’s rotational movement along the X, Y, and Z axes.
 
 ## Getting Started
 
@@ -34,13 +36,21 @@ The Device Status App is a cross-platform mobile application built using Flutter
     flutter run
     ```
 
-## Features
+## Platform-Specific Implementation
 
-- **Battery Level:** Display battery level as a percentage.
-- **Battery Health:** Show battery health status (good, cold, dead, overheat, over voltage, unspecified failure, or unknown).
-- **Battery Temperature:** Display battery temperature in degrees Celsius.
-- **Battery Voltage:** Show battery voltage in millivolts (mV).
-- **Charging Status:** Indicate battery charging status (charging, discharging, full, or not charging).
+### Android
+The Android implementation uses native code to access battery and sensor information. This is done through the MainActivity.kt file, where we define methods to retrieve battery information and sensor data using the SensorManager.
+
+### Key Methods
+•	getBatteryInfo: Fetches the battery level, health, temperature, voltage, and charging status.
+•	getSensorData: Retrieves data from the accelerometer and gyroscope sensors.
+
+### iOS
+The iOS implementation leverages the CoreMotion framework to access sensor data. Battery information is retrieved using the UIDevice class.
+
+### Key Methods
+•	receiveBatteryInfo: Retrieves battery-related information, including level, health, temperature, voltage, and charging status.
+•	receiveSensorData: Fetches data from the accelerometer and gyroscope using the CMMotionManager.
 
 ## Contributing
 
@@ -67,6 +77,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgements
 
 - [Flutter](https://flutter.dev/) for providing the framework.
-- [OpenAI](https://openai.com/) for the conversational AI API.
 
 For more information, visit the [project repository](https://github.com/andriyantohalim/device_status_app.git).
