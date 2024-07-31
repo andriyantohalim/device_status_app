@@ -41,16 +41,16 @@ The Device Status App is a cross-platform mobile application built using Flutter
 ### Android
 The Android implementation uses native code to access battery and sensor information. This is done through the MainActivity.kt file, where we define methods to retrieve battery information and sensor data using the SensorManager.
 
-### Key Methods
-•	getBatteryInfo: Fetches the battery level, health, temperature, voltage, and charging status.
-•	getSensorData: Retrieves data from the accelerometer and gyroscope sensors.
+Key Methods:
+- getBatteryInfo: Fetches the battery level, health, temperature, voltage, and charging status.
+- getSensorData: Retrieves data from the accelerometer and gyroscope sensors.
 
 ### iOS
 The iOS implementation leverages the CoreMotion framework to access sensor data. Battery information is retrieved using the UIDevice class.
 
-### Key Methods
-•	receiveBatteryInfo: Retrieves battery-related information, including level, health, temperature, voltage, and charging status.
-•	receiveSensorData: Fetches data from the accelerometer and gyroscope using the CMMotionManager.
+Key Methods:
+- receiveBatteryInfo: Retrieves battery-related information, including level, health, temperature, voltage, and charging status.
+- receiveSensorData: Fetches data from the accelerometer and gyroscope using the CMMotionManager.
 
 ## Contributing
 
